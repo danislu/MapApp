@@ -1,0 +1,1 @@
+export const LOCAL_STORAGE_KEY = 'http://www.danislu.com/2015/v1/mapapp/key/localstorage';
