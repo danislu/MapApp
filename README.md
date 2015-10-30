@@ -1,2 +1,2 @@
 # MapApp
-Testing out React+Es6 with a Map App
+Testing out React and Flux using Redux and Es6 on a simple Map App thingy
