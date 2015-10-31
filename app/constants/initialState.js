@@ -9,12 +9,12 @@ const initialState = {
         y: 0
     },
     track: false,
-    /*ui: {
+    ui: {
         sidebar: {
             open: false,
-            activeScreen: ActiveScreenMap
+            //activeScreen: ActiveScreenMap
         }
-    }*/
+    }
 }
 
 export default initialState;

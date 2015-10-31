@@ -1,27 +1,37 @@
 import React from 'react';
 import Map from './map';
 
+import Store from './../store';
+import { setCenter, setRandomCenter, removePoint, addPoint, addRandomPoint, setSidebarOpen } from './../actions';
+
 export default class MainView extends React.Component {
     constructor(props){
         super(props);
         
         this.removeClicked = this.removeClicked.bind(this);
         this.handleMapClick = this.handleMapClick.bind(this);
-        this.handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
         this.createMarkers = this.createMarkers.bind(this);
+        this.centerChanged = this.centerChanged.bind(this);
+        
+        Store.subscribe(()=>{
+            this.setState(Store.getState());
+        });
+        
+        this.state = Store.getState();
     }
     
     removeClicked(index){
-        this.props.removePoint(index);
+        Store.dispatch(removePoint(index));
     }
     
     handleMapClick({ latLng }){
-        console.log(latLng.toString());
-        this.props.addPoint(latLng.lat(), latLng.lng());
+        let x = latLng.lat();
+        let y = latLng.lng();
+        Store.dispatch(addPoint(x,y));
     }
     
-    handleMarkerRightClick(index){
-        this.props.removePoint(index);
+    centerChanged(x,y){
+        Store.dispatch(setCenter(x,y));
     }
     
     createMarkers(points){
@@ -29,7 +39,6 @@ export default class MainView extends React.Component {
         return list.map((m) => {
             return new google.maps.Marker({
                 position: new google.maps.LatLng(m.x, m.y),
-                //map: map,
                 title: 'Hello World!'
             });
         });
@@ -38,14 +47,14 @@ export default class MainView extends React.Component {
     render() {
         return (
             <div>
-                <Map 
+                <Map
                     onMapClick={this.handleMapClick}
-                    onMarkerRightclick={this.handleMarkerRightClick}
-                    markers={this.createMarkers(this.props.points)}
+                    markers={this.createMarkers(this.state.points)}
+                    centerChanged={this.centerChanged}
                     />
                 <button onClick={() => this.props.addRandomPoint()}>add</button>
                 <ul>
-                    {this.props.points.map((p, i) => {
+                    {this.state.points.map((p, i) => {
                         return (
                             <li key={ p.x + '-' + p.y + '-' + i  }>
                                 <p>x: {p.x} y: {p.y}</p>
@@ -58,5 +67,3 @@ export default class MainView extends React.Component {
         );
     }
 }
-
-//MainView.propTypes = { points: React.PropTypes.isRequired };

@@ -14,17 +14,23 @@ export default class SidebarContent extends React.Component {
     render(){
         let items = this.props.points.map((p, i) => {
             return (
-                <li key={ p.x + '-' + p.y + '-' + i  }>
+                <div key={ p.x + '-' + p.y + '-' + i  }>
                     <p>x: {p.x} y: {p.y}</p>
                     <button onClick={() => this.removeClicked(i)}>remove</button>
-                </li>
+                </div>
             );
         });
 
-        return (<ul>
-             {items}
-            </ul>);
-
+        return (
+            <div style={{
+                background: 'blue',
+                height: '100%',
+                width: '250px',
+            }}>
+                <h2>Menu</h2>
+                {items}
+            </div>
+        );
     }
 }
 

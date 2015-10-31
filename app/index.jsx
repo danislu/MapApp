@@ -2,9 +2,19 @@
  
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MapAppRoot } from './components/mapAppRoot';
- 
+import { Router, Route, Link, Redirect } from 'react-router'
+
+import MapAppRoot from './components/mapAppRoot';
+import MainView from './components/mainView';
+import About from './components/about';
+
+
 ReactDOM.render(
-  <MapAppRoot name="Daniel" />,
-  document.getElementById('root')
-);
+  <Router>
+    <Route path="/" component={MapAppRoot}>
+      <Route path="/about" component={About} />
+      <Route path="/map" component={MainView} />
+      <Redirect from="/*" to="map" />
+    </Route>
+  </Router>
+, document.getElementById('root'));

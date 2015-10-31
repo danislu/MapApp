@@ -1,21 +1,21 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
 
-import Footer from './footer';
 import MainView from './mainView';
-import Store from './../store';
-import { setRandomCenter, removePoint, addPoint, addRandomPoint } from './../actions';
+import Navbar from './navbar';
 import SidebarContent from './sidebarContent';
 
-export class MapAppRoot extends React.Component {
+import Store from './../store';
+import { setCenter, setRandomCenter, removePoint, addPoint, addRandomPoint, setSidebarOpen } from './../actions';
+
+export default class MapAppRoot extends React.Component {
 
     constructor(props){
         super(props);
         
-        this.headerClicked = this.headerClicked.bind(this);
-        this.changedHandler = this.changedHandler.bind(this);
-        this.handleAddPoint = this.handleAddPoint.bind(this);
         this.handleRemovePoint = this.handleRemovePoint.bind(this);
+        this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+        this.onToggleSidebar = this.onToggleSidebar.bind(this);
         
         Store.subscribe(()=>{
             this.setState(Store.getState());
@@ -24,30 +24,25 @@ export class MapAppRoot extends React.Component {
         this.state = Store.getState();
     }
 
-    changedHandler() {
-        this.setState(Store.getState());
-    }
-
-    handleAddPoint(x,y){
-        Store.dispatch(addPoint(x,y));
-    }
-    
     handleRemovePoint(index){
         Store.dispatch(removePoint(index));
     }
     
-    headerClicked(e) {
-        Store.dispatch(setRandomCenter());
+    onSetSidebarOpen(open) {
+        Store.dispatch(setSidebarOpen(open));
     }
     
-    get isSidebarOpen() {
-        return this.state.points.length > 0;
+    onToggleSidebar(){
+        let open = this.state.ui.sidebar.open;
+        Store.dispatch(setSidebarOpen(!open));
     }
     
     render() {
+        const { children } = this.props;
+        const { points, ui } = this.state;
         let content = (
             <SidebarContent 
-                points={this.state.points}
+                points={points}
                 removePoint={this.handleRemovePoint}>
             </SidebarContent>
         );
@@ -55,17 +50,13 @@ export class MapAppRoot extends React.Component {
         return (<div>
             <Sidebar
                 sidebar={content}
-                open={this.isSidebarOpen}
-                onActionClick={this.headerClicked}>
-                <MainView
-                    center={this.state.center}
-                    points={this.state.points}
-                    addPoint={this.handleAddPoint}
-                    removePoint={this.handleRemovePoint}>
-                    markers={this.state.points}
-                </MainView>
+                open={ui.sidebar.open}
+                onSetOpen={this.onSetSidebarOpen}>
+                <section>
+                    <Navbar onOpenMenuClick={this.onToggleSidebar} />
+                    {children}
+                </section>
             </Sidebar>
         </div>);
     }
-    
 }

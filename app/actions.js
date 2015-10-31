@@ -1,4 +1,4 @@
-import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK } from './constants/actionTypes';
+import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK, TOGGLE_SIDEBAR } from './constants/actionTypes';
 
 export function addRandomPoint() {
     let x = getRandomIntInclusive(1, 10);
@@ -53,5 +53,12 @@ export function setRandomCenter() {
     return {
         type: SET_CENTER,
         point: { x: getRandomIntInclusive(1,10), y: getRandomIntInclusive(1,10) }
+    };
+}
+
+export function setSidebarOpen(isOpen) {
+    return {
+        type: TOGGLE_SIDEBAR,
+        open: isOpen
     };
 }

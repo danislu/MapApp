@@ -5,6 +5,7 @@ export default class Map extends React.Component {
 
     constructor(props){
         super(props);
+        this.map = null;
     }
     
     render() {
@@ -19,7 +20,12 @@ export default class Map extends React.Component {
                 }
                 defaultZoom={3}
                 defaultCenter={{lat: -25.363882, lng: 131.044922}}
-                onClick={this.props.onMapClick}>
+                onClick={this.props.onMapClick}
+                onCenterChanged={()=>{
+                    let mapCenter = this.map.center;
+                    this.props.centerChanged(mapCenter.lat(), mapCenter.lng());
+                }}
+                ref={(ref) => this.map = ref}>
                 {this.props.markers.map((marker, index) => {
                     return (
                         <Marker
