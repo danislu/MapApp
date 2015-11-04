@@ -15,6 +15,8 @@ export default class Map extends React.Component {
                     {
                         style: {
                             height: "100%",
+                            top: "10%",
+                            bottom: "10%"
                         },
                     }
                 }
@@ -37,5 +39,4 @@ export default class Map extends React.Component {
             </GoogleMap>
         );
     }
-
 }

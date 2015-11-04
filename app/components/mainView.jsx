@@ -46,13 +46,19 @@ export default class MainView extends React.Component {
     
     render() {
         return (
-            <div>
-                <Map
-                    onMapClick={this.handleMapClick}
-                    markers={this.createMarkers(this.state.points)}
-                    centerChanged={this.centerChanged}
-                    />
-                <button onClick={() => this.props.addRandomPoint()}>add</button>
+        <div className="container">
+            <Map
+                onMapClick={this.handleMapClick}
+                markers={this.createMarkers(this.state.points)}
+                centerChanged={this.centerChanged}
+                />
+        </div>
+        );
+    }
+}
+
+/*
+<button onClick={() => this.props.addRandomPoint()}>add</button>
                 <ul>
                     {this.state.points.map((p, i) => {
                         return (
@@ -63,7 +69,4 @@ export default class MainView extends React.Component {
                         );
                     })}
                 </ul>
-            </div>
-        );
-    }
-}
+*/

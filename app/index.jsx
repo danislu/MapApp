@@ -8,13 +8,11 @@ import MapAppRoot from './components/mapAppRoot';
 import MainView from './components/mainView';
 import About from './components/about';
 
-
 ReactDOM.render(
   <Router>
-    <Route path="/" component={MapAppRoot}>
+    <Route path="" component={MapAppRoot}>
       <Route path="/about" component={About} />
-      <Route path="/map" component={MainView} />
-      <Redirect from="/*" to="map" />
+      <Route path="/*" component={MainView} />
     </Route>
   </Router>
 , document.getElementById('root'));

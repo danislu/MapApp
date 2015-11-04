@@ -2,7 +2,8 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 
 import MainView from './mainView';
-import Navbar from './navbar';
+import MapAppNavbar from './mapAppNavbar';
+import DslFooter from './footer';
 import SidebarContent from './sidebarContent';
 
 import Store from './../store';
@@ -47,16 +48,19 @@ export default class MapAppRoot extends React.Component {
             </SidebarContent>
         );
 
-        return (<div>
-            <Sidebar
-                sidebar={content}
-                open={ui.sidebar.open}
-                onSetOpen={this.onSetSidebarOpen}>
-                <section>
-                    <Navbar onOpenMenuClick={this.onToggleSidebar} />
-                    {children}
-                </section>
+        return (
+        <Sidebar
+                    sidebar={content}
+                    open={ui.sidebar.open}
+                    onSetOpen={this.onSetSidebarOpen}>
+                
+
+            <MapAppNavbar onOpenMenuClick={this.onToggleSidebar} />
+                       {children}
+            
+            <DslFooter />
+
             </Sidebar>
-        </div>);
+        );
     }
 }
