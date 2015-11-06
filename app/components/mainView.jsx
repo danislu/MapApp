@@ -1,8 +1,9 @@
 import React from 'react';
-import Map from './map';
+import GMap from './google/gmap';
+import LMap from './leaflet/lmap'; 
 
 import Store from './../store';
-import { setCenter, setRandomCenter, removePoint, addPoint, addRandomPoint, setSidebarOpen } from './../actions';
+import { setCenter, setRandomCenter, removePoint, addPoint, addRandomPoint, setSidebarOpen, setZoom } from './../actions';
 
 export default class MainView extends React.Component {
     constructor(props){
@@ -12,12 +13,17 @@ export default class MainView extends React.Component {
         this.handleMapClick = this.handleMapClick.bind(this);
         this.createMarkers = this.createMarkers.bind(this);
         this.centerChanged = this.centerChanged.bind(this);
+        this.handleZoomChanged = this.handleZoomChanged.bind(this);
         
         Store.subscribe(()=>{
             this.setState(Store.getState());
         });
         
         this.state = Store.getState();
+    }
+    
+    handleZoomChanged(zoom){
+        Store.dispatch(setZoom(zoom));
     }
     
     removeClicked(index){
@@ -45,28 +51,20 @@ export default class MainView extends React.Component {
     }
     
     render() {
+        let { points, center, zoom } = this.state;
+    
         return (
         <div className="container">
-            <Map
+            <GMap
+                markers={this.createMarkers(points)}
                 onMapClick={this.handleMapClick}
-                markers={this.createMarkers(this.state.points)}
-                centerChanged={this.centerChanged}
+                onMarkerRightclick={this.removeClicked}
+                onCenterChanged={this.centerChanged}
+                onZoomChanged={this.handleZoomChanged}
+                zoom={zoom}
+                center={center}
                 />
         </div>
         );
     }
 }
-
-/*
-<button onClick={() => this.props.addRandomPoint()}>add</button>
-                <ul>
-                    {this.state.points.map((p, i) => {
-                        return (
-                            <li key={ p.x + '-' + p.y + '-' + i  }>
-                                <p>x: {p.x} y: {p.y}</p>
-                                <button onClick={() => this.removeClicked(i)}>remove</button>
-                            </li>
-                        );
-                    })}
-                </ul>
-*/

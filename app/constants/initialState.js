@@ -5,9 +5,10 @@ export const ActiveScreenSettings = "settings";
 const initialState = {
     points: [],
     center: {
-        x: 0,
-        y: 0
+        x: -25.363882,
+        y: 131.044922
     },
+    zoom: 3,
     track: false,
     ui: {
         sidebar: {
@@ -16,5 +17,7 @@ const initialState = {
         }
     }
 }
+
+//defaultCenter={{lat: -25.363882, lng: 131.044922}}
 
 export default initialState;

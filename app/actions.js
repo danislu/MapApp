@@ -1,4 +1,4 @@
-import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK, TOGGLE_SIDEBAR } from './constants/actionTypes';
+import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK, TOGGLE_SIDEBAR, SET_ZOOM } from './constants/actionTypes';
 
 export function addRandomPoint() {
     let x = getRandomIntInclusive(1, 10);
@@ -20,6 +20,13 @@ export function removePoint(index) {
     return {
         type: REMOVE_POINT,
         index: index
+    };
+}
+
+export function setZoom(zoom){
+    return {
+        type: SET_ZOOM,
+        zoom: zoom
     };
 }
 

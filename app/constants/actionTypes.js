@@ -7,3 +7,5 @@ export const SET_CENTER = "set_center";
 export const TRACK = "track";
 
 export const TOGGLE_SIDEBAR = "toggle_sidebar";
+
+export const SET_ZOOM = "set_zoom";

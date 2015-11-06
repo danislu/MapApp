@@ -41,6 +41,7 @@ export default class MapAppRoot extends React.Component {
     render() {
         const { children } = this.props;
         const { points, ui } = this.state;
+        
         let content = (
             <SidebarContent 
                 points={points}
@@ -49,18 +50,12 @@ export default class MapAppRoot extends React.Component {
         );
 
         return (
-        <Sidebar
-                    sidebar={content}
-                    open={ui.sidebar.open}
-                    onSetOpen={this.onSetSidebarOpen}>
-                
-
-            <MapAppNavbar onOpenMenuClick={this.onToggleSidebar} />
-                       {children}
-            
-            <DslFooter />
-
+            <Sidebar sidebar={content} open={ui.sidebar.open} onSetOpen={this.onSetSidebarOpen}>
+                <MapAppNavbar onOpenMenuClick={this.onToggleSidebar} />
+                {children}
+                <DslFooter />
             </Sidebar>
         );
     }
 }
+//
