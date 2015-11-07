@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, Redirect } from 'react-router'
 import { Provider } from 'react-redux';
 
-import MapAppRoot from './components/mapAppRoot';
+import RootContainer from './containers/rootContainer';
 import MainView from './components/mainView';
-import MapView from './components/mapView';
+import MapViewContainer from './containers/mapViewContainer';
 import About from './components/about';
 
 import Store from './store';
@@ -15,9 +15,9 @@ import Store from './store';
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route path="" component={MapAppRoot}>
+      <Route path="" component={RootContainer}>
         <Route path="/about" component={About} />
-        <Route path="/map" component={MapView} />
+        <Route path="/map" component={MapViewContainer} />
         <Route path="/*" component={MainView} />
       </Route>
     </Router>

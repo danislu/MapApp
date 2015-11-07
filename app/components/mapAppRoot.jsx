@@ -5,56 +5,31 @@ import MapAppNavbar from './mapAppNavbar';
 import DslFooter from './footer';
 import SidebarContent from './sidebarContent';
 
-import Store from './../store';
-import { setCenter, setRandomCenter, removePoint, addPoint, addRandomPoint, setSidebarOpen } from './../actions';
-
 export default class MapAppRoot extends React.Component {
 
     constructor(props){
         super(props);
-        
-        this.handleRemovePoint = this.handleRemovePoint.bind(this);
-        this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-        this.onToggleSidebar = this.onToggleSidebar.bind(this);
-        
-        Store.subscribe(()=>{
-            this.setState(Store.getState());
-        });
-        
-        this.state = Store.getState();
     }
-    
-    handleRemovePoint(index){
-        Store.dispatch(removePoint(index));
-    }
-    
-    onSetSidebarOpen(open) {
-        Store.dispatch(setSidebarOpen(open));
-    }
-    
-    onToggleSidebar(){
-        let open = this.state.ui.sidebar.open;
-        Store.dispatch(setSidebarOpen(!open));
-    }
-    
+
     render() {
-        const { children } = this.props;
-        const { points, ui } = this.state;
+        const { children, points, ui, onSetSidebarOpen, removePoint } = this.props;
         
         let content = (
             <SidebarContent 
                 points={points}
-                removePoint={this.handleRemovePoint}>
+                removePoint={removePoint}>
             </SidebarContent>
         );
 
         return (
-            <Sidebar sidebar={content} open={ui.sidebar.open} onSetOpen={this.onSetSidebarOpen}>
-                <MapAppNavbar onOpenMenuClick={this.onToggleSidebar} />
+            <Sidebar sidebar={content} open={ui.sidebar.open} onSetOpen={onSetSidebarOpen}>
+                <MapAppNavbar onOpenMenuClick={()=>{
+                    let open = ui.sidebar.open;
+                    onSetSidebarOpen(open);
+                }} />
                 {children}
                 <DslFooter />
             </Sidebar>
         );
     }
 }
-//
