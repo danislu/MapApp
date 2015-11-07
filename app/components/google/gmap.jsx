@@ -48,7 +48,7 @@ export default class GMap extends React.Component {
                 center={{lat: center.x, lng: center.y}}
                 onClick={onMapClick}
                 onCenterChanged={this.handleCenterChanged}
-                ref={(ref) => this.map = ref}>
+                ref={(ref) => this.map = ref}>  
                 {markers.map((marker, index) => {
                     return (
                         <Marker

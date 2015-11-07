@@ -4,7 +4,6 @@ import _ from 'lodash';
 import mapApp from './reducers/allReducers';
 import initialState from './constants/initialState';
 import { LOCAL_STORAGE_KEY } from './constants/settings';
-
 import persistState from 'redux-localstorage';
 
 const createPersistentStore = compose(

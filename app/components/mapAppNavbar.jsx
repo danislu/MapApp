@@ -15,7 +15,8 @@ export default class MapAppNavbar extends React.Component {
                 <CollapsibleNav eventKey={0}>
                     <Nav navbar>
                         <NavItem eventKey={1} href="#/">Home</NavItem>
-                        <NavItem eventKey={2} href="#/about">About</NavItem>
+                        <NavItem eventKey={2} href="#/map">Map</NavItem>
+                        <NavItem eventKey={3} href="#/about">About</NavItem>
                     </Nav>
                 </CollapsibleNav>
             </Navbar>

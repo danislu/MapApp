@@ -1,7 +1,6 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
 
-import MainView from './mainView';
 import MapAppNavbar from './mapAppNavbar';
 import DslFooter from './footer';
 import SidebarContent from './sidebarContent';
@@ -24,7 +23,7 @@ export default class MapAppRoot extends React.Component {
         
         this.state = Store.getState();
     }
-
+    
     handleRemovePoint(index){
         Store.dispatch(removePoint(index));
     }
