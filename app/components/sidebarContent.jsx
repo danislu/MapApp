@@ -33,24 +33,3 @@ export default class SidebarContent extends React.Component {
         );
     }
 }
-
-/*
-
-
-
-<h4>{`x:${i.x} y:${i.y}`}</h4>
-
-let points = this.props.points || [];
-        let items = points.map((i, index)=> {
-            return (
-                <li key={i.x + '-' + i.y + '-' + index}>
-                    <h4>{`x:${i.x} y:${i.y}`}</h4>
-                    <button onClick={this.props.removePoint(index)}>x</button>
-                </li>
-            );
-        });
-        return (<ul>
-            {items}
-            </ul>);
-
-*/

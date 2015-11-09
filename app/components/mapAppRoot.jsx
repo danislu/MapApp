@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 
 import MapAppNavbar from './mapAppNavbar';
-import DslFooter from './footer';
+import Footer from './footer';
 import SidebarContent from './sidebarContent';
 
 export default class MapAppRoot extends React.Component {
@@ -28,7 +28,7 @@ export default class MapAppRoot extends React.Component {
                     onSetSidebarOpen(open);
                 }} />
                 {children}
-                <DslFooter />
+                <Footer />
             </Sidebar>
         );
     }

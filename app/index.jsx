@@ -16,9 +16,10 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Route path="" component={RootContainer}>
-        <Route path="/about" component={About} />
+        <Route path="/home" component={MainView} />
         <Route path="/map" component={MapViewContainer} />
-        <Route path="/*" component={MainView} />
+        <Route path="/about" component={About} />
+        <Redirect from="/*" to="/home" />
       </Route>
     </Router>
   </Provider>

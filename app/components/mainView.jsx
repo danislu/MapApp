@@ -8,7 +8,10 @@ export default class MainView extends Component {
     
     render(){
         return (
-            <PageHeader>React-Map-App</PageHeader>
+            <PageHeader
+                title={'React-Map-App'}
+                subTitle={'The sub title'}
+             />
         );
     }
 }
