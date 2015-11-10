@@ -49,3 +49,12 @@ export function PublishAction(action) {
         }
     });
 };
+
+export function DispatchAndPublish(mapFunc){
+    return (dispatch) => {
+        return mapFunc((action) => {
+            dispatch(action);
+            PublishAction(action);
+        });
+    };
+}
