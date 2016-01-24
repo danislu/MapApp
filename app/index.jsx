@@ -2,7 +2,7 @@
  
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, Redirect } from 'react-router'
+import { Router, Route, Link, Redirect, hashHistory } from 'react-router'
 import { Provider } from 'react-redux';
 
 import RootContainer from './containers/rootContainer';
@@ -14,7 +14,7 @@ import Store from './store';
 
 ReactDOM.render(
   <Provider store={Store}>
-    <Router>
+    <Router history={hashHistory}>
       <Route path="" component={RootContainer}>
         <Route path="/home" component={MainView} />
         <Route path="/map" component={MapViewContainer} />

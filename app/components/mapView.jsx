@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import DslMap from './mapgl/mapgl';
 import GMap from './google/gmap';
 
 export default class MapView extends React.Component {
@@ -28,7 +29,8 @@ export default class MapView extends React.Component {
             removePoint } = this.props;
     
         return (
-            <GMap
+            //GMap
+            <DslMap
                 zoom={zoom}
                 center={center}
                 markers={this.createMarkers(points)}
