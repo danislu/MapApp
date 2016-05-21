@@ -5,13 +5,15 @@ export default class MainView extends Component {
     constructor(props){
         super(props);
     }
-    
+
     render(){
         return (
             <PageHeader
                 title={'React-Map-App'}
                 subTitle={'The sub title'}
-             />
+             >
+             <p>hello hello hello hello</p>
+            </PageHeader>
         );
     }
 }

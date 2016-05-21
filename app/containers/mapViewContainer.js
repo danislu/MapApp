@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 
-import MapView from './../components/mapView';
+import Map from './../components/map';
 import Store from './../store';
 import * as actions from './../actions';
 import { SubscribeActions, DispatchAndPublish } from './../pubnub/backend';
+import { routeActions } from 'redux-simple-router';
 
 const token = SubscribeActions((channel, action) => {
     Store.dispatch(action);
@@ -11,7 +12,7 @@ const token = SubscribeActions((channel, action) => {
 
 function mapStateToProps(state) {
     return {
-        points: state.points, 
+        points: state.points,
         center: state.center,
         zoom: state.zoom
     }
@@ -29,4 +30,4 @@ const mapDispatchToProps = DispatchAndPublish((dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MapView)
+)(Map)

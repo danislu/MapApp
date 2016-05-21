@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import DslMap from './mapgl/mapgl';
 import GMap from './google/gmap';
 
-export default class MapView extends React.Component {
+export default class Map extends React.Component {
     constructor(props){
         super(props);
-        
+
         this.createMarkers = this.createMarkers.bind(this);
     }
 
@@ -18,19 +18,20 @@ export default class MapView extends React.Component {
             });
         });
     }
-    
+
     render() {
-        let { points, 
-            center, 
-            zoom, 
+        let { points,
+            center,
+            zoom,
             setZoom,
             setCenter,
             addPoint,
             removePoint } = this.props;
-    
+
         return (
-            //GMap
-            <DslMap
+            //DslMap
+            <GMap
+
                 zoom={zoom}
                 center={center}
                 markers={this.createMarkers(points)}
@@ -43,7 +44,7 @@ export default class MapView extends React.Component {
                 onCenterChanged={setCenter}
                 onZoomChanged={setZoom}
                 />
-        
+
         );
     }
 }

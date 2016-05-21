@@ -28,7 +28,8 @@
     "react-sidebar": "^2.0.0",
     "redux": "^3.0.2",
     "redux-localstorage": "^0.4.0",
-    "redux-localstorage-filter": "^0.1.1"
+    "redux-localstorage-filter": "^0.1.1",
+    "redux-simple-router": "^2.0.4"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -39,6 +40,7 @@
     "babelify": "^7.2.0",
     "bootstrap": "^3.3.5",
     "browserify": "^13.0.0",
+    "connect-history-api-fallback": "^1.1.0",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
     "gulp-sass": "^2.0.4",
