@@ -9,3 +9,5 @@ export const TRACK = "track";
 export const TOGGLE_SIDEBAR = "toggle_sidebar";
 
 export const SET_ZOOM = "set_zoom";
+
+export const SELECTED_DATE = "selected_date";

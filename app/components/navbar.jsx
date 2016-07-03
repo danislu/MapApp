@@ -29,6 +29,9 @@ export default class MyNavbar extends React.Component {
                             active={this.isActive("map")}
                             onClick={() => navigateTo('/map')}>Map</NavItem>
                         <NavItem eventKey={3}
+                            active={this.isActive("cal")}
+                            onClick={() => navigateTo('/cal')}>Cal</NavItem>
+                        <NavItem eventKey={4}
                             active={this.isActive("about")}
                             onClick={() => navigateTo('/about')}>About</NavItem>
                     </Nav>

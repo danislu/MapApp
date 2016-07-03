@@ -6,7 +6,7 @@ var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 
 gulp.task('connect', function(){
-  connect.server({
+  return connect.server({
     port: 8080,
     livereload: true,
     fallback: ''
@@ -14,7 +14,7 @@ gulp.task('connect', function(){
 });
 
 gulp.task('js:build', function () {
-  browserify({
+  return browserify({
     entries: 'app/index.jsx',
     extensions: ['.jsx', '.js'],
     debug: true
@@ -26,17 +26,17 @@ gulp.task('js:build', function () {
 });
 
 gulp.task('js:watch', function () {
-   gulp.watch(['app/**/*.js', 'app/**/*.jsx'], ['js:build']);
+   return gulp.watch(['app/**/*.js', 'app/**/*.jsx'], ['js:build']);
 });
 
 gulp.task('sass', function () {
-  gulp.src('./sass/**/*.scss')
+  return gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./css'));
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  return gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
 gulp.task('default', ['connect', 'sass', 'js:build', 'js:watch', 'sass:watch']);

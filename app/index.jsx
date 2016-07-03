@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { syncHistory, routeReducer } from 'redux-simple-router'
 
 import RootContainer from './containers/rootContainer';
+import CalendarContainer from './containers/calendarContainer';
 import MainView from './components/mainView';
 import MapViewContainer from './containers/mapViewContainer';
 import About from './components/about';
@@ -19,11 +20,10 @@ ReactDOM.render(
       <Route path="/" component={RootContainer}>
         <IndexRoute component={MainView} />
         <Route path="map" component={MapViewContainer} />
+        <Route path="cal" component={CalendarContainer} />
         <Route path="about" component={About} />
       </Route>
     </Router>
   </Provider>
 , document.getElementById('root'));
 
-
-//<Redirect from="/*" to="/home" />

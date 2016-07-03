@@ -1,5 +1,12 @@
 import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK, TOGGLE_SIDEBAR, SET_ZOOM } from './constants/actionTypes';
 
+export function selectedDateChanged(date) {
+    return {
+        type: 'SELECTED_DATE',
+        currentDate: date
+    }
+}
+
 export function addRandomPoint() {
     let x = getRandomIntInclusive(1, 10);
     let y = getRandomIntInclusive(1, 10);

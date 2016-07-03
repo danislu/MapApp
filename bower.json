@@ -16,6 +16,7 @@
     "test",
     "tests"
   ],
+   "directory" : "dist/bower_components/",
   "dependencies": {
     "bootstrap": "~3.3.5"
   }
