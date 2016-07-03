@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import App from './../components/app';
+import App from './../components/App';
 import Store from './../store';
 import * as actions from './../actions';
 import { routeActions } from 'redux-simple-router';

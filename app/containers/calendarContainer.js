@@ -1,7 +1,7 @@
         
 import { connect } from 'react-redux'
 
-import CalendarView from './../components/calendarView';
+import CalendarView from './../components/Calendar';
 import Store from './../store';
 import * as actions from './../actions';
 import { SubscribeActions, DispatchAndPublish } from './../pubnub/backend';

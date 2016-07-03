@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Map from './../components/map';
+import Map from './../components/Map';
 import Store from './../store';
 import * as actions from './../actions';
 import { SubscribeActions, DispatchAndPublish } from './../pubnub/backend';
