@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 
-import mapApp from './reducers/allReducers';
+import mapApp from './reducers';
 import initialState from './constants/initialState';
 import { LOCAL_STORAGE_KEY } from './constants/settings';
 import persistState from 'redux-localstorage';

@@ -1,5 +1,8 @@
 // index.jsx
 
+import './css/base';
+import './../node_modules/bootstrap/less/bootstrap.less';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router'

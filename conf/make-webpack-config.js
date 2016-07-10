@@ -84,6 +84,10 @@ module.exports = function(options) {
           test: /\.jpg$/,
           loader: 'file',
         },
+        { 
+          test: /\.(woff|woff2|eot|ttf)$/, 
+          loader: 'url-loader?limit=100000'
+        }
       ],
     },
     resolve: {

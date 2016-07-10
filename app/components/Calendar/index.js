@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Calendar } from 'react-widgets';
 
-import 'react-widgets/lib/scss/react-widgets.scss';
+import './../../../node_modules/react-widgets/lib/scss/react-widgets.scss';
 
 const DayComponent = ({ date, label }) => {
     const color = date.toDateString() === (new Date()).toDateString() ? "blue" : "yellow",
@@ -21,16 +21,19 @@ const DayComponent = ({ date, label }) => {
     );
 }
 
-const CalendarView = ({ dateChanged }) => {
-    const changeHandler = (name) => {
-        return (date) => console.log(`${name} => ${date}`);
-    };
+const CalendarView = ({ selectedDate, dates, dateChanged, addToDate, removeImage }) => {
+    const image = dates[selectedDate];
 
-    return <Calendar 
-        defaultValue={new Date()}
-        dayComponent={DayComponent}
-        footer={true}
-        onCurrentDateChange={dateChanged} />    
+    return (
+        <div>
+            <Calendar 
+                defaultValue={selectedDate}
+                dayComponent={DayComponent}
+                footer={true}
+                onCurrentDateChange={dateChanged} />
+            <input type="text">{image}</input>
+            <button click={addToDate}>add it</button>            
+        </div>);    
 }
 
 CalendarView.displayName = 'Calender';

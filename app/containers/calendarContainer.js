@@ -20,13 +20,16 @@ const token = SubscribeActions((channel, action) => {
 
 function mapStateToProps(state) {
     return {
-        defaultDate: new Date()
+        selectedDate: state.calendar.selected,
+        dates: state.calendar.dates
     }
 }
 
 const mapDispatchToProps = DispatchAndPublish((dispatch) => {
     return {
         dateChanged: (date) => dispatch(actions.selectedDateChanged(date)),
+        addToDate: (image, date) => dispatch(action.addImageToDate(image, date)),
+        removeImage: (date) => dispatch(action.removeImageFromDate(date))
     }
 });
 

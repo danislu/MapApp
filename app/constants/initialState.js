@@ -15,6 +15,10 @@ const initialState = {
             open: false,
             //activeScreen: ActiveScreenMap
         }
+    },
+    calendar: {
+        dates: {},
+        selected: new Date()
     }
 }
 

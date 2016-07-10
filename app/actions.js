@@ -1,9 +1,33 @@
-import { ADD_POINT, REMOVE_POINT, SET_CENTER, TRACK, TOGGLE_SIDEBAR, SET_ZOOM } from './constants/actionTypes';
+import { 
+    ADD_POINT, 
+    REMOVE_POINT, 
+    SET_CENTER, 
+    TRACK, 
+    TOGGLE_SIDEBAR, 
+    SET_ZOOM,
+    SELECTED_DATE,
+    ADD_IMAGE_TO_DATE,
+    REMOVE_IMAGE_FROM_DATE } from './constants/actionTypes';
+
+export function addImageToDate(image, date) {
+    return {
+        type: ADD_IMAGE_TO_DATE,
+        date: date,
+        imageUrl: image
+    };
+}
+
+export function removeImageFromDate(date) {
+    return {
+        type: REMOVE_IMAGE_FROM_DATE,
+        date: date
+    };
+}
 
 export function selectedDateChanged(date) {
     return {
-        type: 'SELECTED_DATE',
-        currentDate: date
+        type: SELECTED_DATE,
+        newDate: date
     }
 }
 
