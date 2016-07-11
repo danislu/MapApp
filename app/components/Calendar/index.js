@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Calendar } from 'react-widgets';
 
-import './../../../node_modules/react-widgets/lib/scss/react-widgets.scss';
+
 
 const DayComponent = ({ date, label }) => {
     const color = date.toDateString() === (new Date()).toDateString() ? "blue" : "yellow",

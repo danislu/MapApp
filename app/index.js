@@ -1,7 +1,6 @@
 // index.jsx
 
-import './css/base';
-import './../node_modules/bootstrap/less/bootstrap.less';
+import './css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
